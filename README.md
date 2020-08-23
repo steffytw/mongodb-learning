@@ -69,3 +69,138 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
 { "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
 ```
+## added some other values
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"Lisa",age :30})
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5f4221ac684950ade1ce9452")
+}
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertMany([{ name :"Manual",age:27},{name :"Harleen",age :25}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5f4221d6684950ade1ce9453"),
+		ObjectId("5f4221d6684950ade1ce9454")
+	]
+}
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
+{ "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221ac684950ade1ce9452"), "name" : "Lisa", "age" : 30 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9454"), "name" : "Harleen", "age" : 25 }
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:27})
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+
+```
+## find age in 27
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:27})
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+
+
+```
+
+## find age greater than 25
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:{$gt :25}})
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221ac684950ade1ce9452"), "name" : "Lisa", "age" : 30 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+```
+
+## nested documents in collections
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"Stewart",age :30,address:{street: "t1 indranagar",city:" kolkata"}})
+
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5f422a2a684950ade1ce9455")
+}
+
+
+
+
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
+{ "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221ac684950ade1ce9452"), "name" : "Lisa", "age" : 30 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9454"), "name" : "Harleen", "age" : 25 }
+{ "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
+
+
+
+```
+
+## find adress with street t1 indranagar
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street":"t1 indranagar"})
+{ "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
+```
+
+## find adress with stret t1 indranagar, nothing is returned
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street":"t1 indranagar"})
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY>
+```
+
+## updated age of lisa ,set to 45
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{$set:{age:56}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
+{ "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221ac684950ade1ce9452"), "name" : "Lisa", "age" : 45 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9454"), "name" : "Harleen", "age" : 25 }
+{ "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
+```
+
+## updated age of lisa without set to 56
+The name is gone and the age is updated.Id is same .
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{age:56})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
+{ "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221ac684950ade1ce9452"), "age" : 56 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9454"), "name" : "Harleen", "age" : 25 }
+{ "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
+
+```
+## delete age of 56
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.deleteOne({age:56})
+{ "acknowledged" : true, "deletedCount" : 1 }
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
+{ "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9454"), "name" : "Harleen", "age" : 25 }
+{ "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
+```
+
+
+## delete name Thankam
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.deleteOne({ name :"Thankam"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
+{ "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
+{ "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
+{ "_id" : ObjectId("5f4221d6684950ade1ce9454"), "name" : "Harleen", "age" : 25 }
+{ "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
+
+```
