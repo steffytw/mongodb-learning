@@ -1,4 +1,9 @@
-# mongodb-tutorial
+# MongoDB
+
+MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. 
+
+### What is MongoDB good for?
+MongoDB is great for transactional stores where performance is a concern. Its also great when the data structure is going to evolve over time, as its schema-less operations allow you to update the data on the fly.
 ## Connection Setup
 ```
 steffy@steffy:~/mongodb-linux-x86_64-ubuntu1804-4.4.0/bin$ mongo "mongodb+srv://cluster0.c2bvg.mongodb.net/<dbname>" --username steffy
@@ -22,7 +27,7 @@ local  3.769GB
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> use first-test
 switched to db first-test
 ```
-## insert one values to database
+## insert one value to collections
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"steffy",age :23})
 {
@@ -69,7 +74,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
 { "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
 ```
-## added some other values
+## add some other values
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"Lisa",age :30})
 {
@@ -136,7 +141,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 
 ```
 
-## find adress with street t1 indranagar
+## find address with street t1 indranagar
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street":"t1 indranagar"})
 { "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
@@ -148,7 +153,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street"
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY>
 ```
 
-## updated age of lisa ,set to 45
+## updated age of Lisa ,set to 45
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{$set:{age:56}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
@@ -163,7 +168,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 ```
 
 ## updated age of lisa without set to 56
-The name is gone and the age is updated.Id is same .
+The name is not there and the age is updated.Here the Id is same.
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{age:56})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
