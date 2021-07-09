@@ -1,9 +1,10 @@
 # MongoDB
 
-MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. 
-
-### What is MongoDB good for?
-MongoDB is great for transactional stores where performance is a concern. Its also great when the data structure is going to evolve over time, as its schema-less operations allow you to update the data on the fly.
+* MongoDB is a cross-platform document-oriented database program. 
+* Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. 
+* MongoDB is developed by MongoDB Inc. 
+* MongoDB is great for transactional stores where performance is a concern. 
+* Its also great when the data structure is going to evolve over time, as its schema-less operations allow you to update the data on the fly.
 ## Connection Setup
 ```
 steffy@steffy:~/mongodb-linux-x86_64-ubuntu1804-4.4.0/bin$ mongo "mongodb+srv://cluster0.c2bvg.mongodb.net/<dbname>" --username steffy
@@ -16,7 +17,7 @@ WARNING: shell and server versions do not match
 Error while trying to show server startup warnings: user is not allowed to do action [getLog] on [admin.]
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> 
 ```
-## show database
+## show databases
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show dbs
 admin  0.000GB
@@ -47,7 +48,7 @@ local       3.781GB
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show collections
 users
 ```
-## show values stored in collections ie tables
+## show values stored in collections
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
@@ -147,7 +148,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street"
 { "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
 ```
 
-## find adress with stret t1 indranagar, nothing is returned
+## find adress with street t1 indranagar, nothing is returned
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street":"t1 indranagar"})
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY>
@@ -167,7 +168,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
 ```
 
-## updated age of lisa without set to 56
+## updated age of lisa without setting it to 56
 The name is not there and the age is updated.Here the Id is same.
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{age:56})
