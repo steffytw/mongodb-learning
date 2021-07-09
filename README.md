@@ -13,6 +13,24 @@
 ![image](https://user-images.githubusercontent.com/33021781/125059785-53911f00-e0c9-11eb-9104-868bfc49b601.png)
 
 
+## Table to shows the relationship of RDBMS terminology with MongoDB
+
+![image](https://user-images.githubusercontent.com/33021781/125072558-5f381200-e0d8-11eb-9bc7-f8bd719e66f3.png)
+
+
+## Advantages of MongoDB over RDBMS
+
+* Schema less
+* No complex joins
+* Ease of scale-out
+* Structure of a single object is clear etc
+
+## Why Use MongoDB?
+* Document Oriented Storage − Data is stored in the form of JSON style documents.
+* Index on any attribute
+* Replication and high availability
+* Rich queries
+* Fast in-place updates
 
 ## Connection Setup
 ```
@@ -25,12 +43,6 @@ MongoDB server version: 4.2.8
 WARNING: shell and server versions do not match
 Error while trying to show server startup warnings: user is not allowed to do action [getLog] on [admin.]
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> 
-```
-## show databases
-```
-MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show dbs
-admin  0.000GB
-local  3.769GB
 ```
 ## create database
 ```
@@ -63,7 +75,7 @@ users
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
 ```
-## insert multiple values to database
+## insert multiple values to collections
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertMany({ name :"Thankam"},{name :"Wilson",age :51})
 uncaught exception: TypeError: documents.map is not a function :
