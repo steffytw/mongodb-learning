@@ -96,12 +96,12 @@ This will delete the selected database
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.dropDatabase()
 { "dropped" : "mydb", "ok" : 1 }
 ```
-## Create Colection
+## Create Collection
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.createCollection("tests")
 { "ok" : 1 }
 ```
-## Drop Colection
+## Drop Collection
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.tests.drop()
 true
