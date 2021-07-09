@@ -10,6 +10,7 @@
 ## BSON data format
 *  The name "BSON" is based on the term JSON and stands for "Binary JSON".
 *  BSON is a computer data interchange format.
+
 ![image](https://user-images.githubusercontent.com/33021781/125059785-53911f00-e0c9-11eb-9104-868bfc49b601.png)
 
 * MongoDB supports many datatypes. Some of them are −
@@ -58,11 +59,12 @@ Regular expression − This datatype is used to store regular expression.
 * Structure of a single object is clear etc
 
 ## Why Use MongoDB?
+
 * Document Oriented Storage − Data is stored in the form of JSON style documents.
 * Index on any attribute
 * Replication and high availability
 * Rich queries
-* Fast in-place updates
+* Fast in-place updates etc
 
 ## Connection Setup
 ```
