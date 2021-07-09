@@ -91,7 +91,7 @@ local       3.781GB
 ## Drop database
 This will delete the selected database
 ```
-MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.dropDatabase
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.dropDatabase()
 { "dropped" : "mydb", "ok" : 1 }
 ```
 ## Create Colection
