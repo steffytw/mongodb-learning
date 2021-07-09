@@ -226,7 +226,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street"
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY>
 ```
 
-## updated age of Lisa ,set to 45
+## update age of Lisa ,set to 45
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{$set:{age:56}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
@@ -240,7 +240,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
 ```
 
-## updated age of lisa without setting it to 56
+## update age of lisa without setting it to 56
 The name is not there and the age is updated.Here the Id is same.
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.update({ name :"Lisa"},{age:56})
