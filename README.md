@@ -46,7 +46,7 @@ Code − This datatype is used to store JavaScript code into the document.
 Regular expression − This datatype is used to store regular expression.
 
 
-## Table to shows the relationship of RDBMS terminology with MongoDB
+## Relationship of RDBMS terminology with MongoDB
 
 ![image](https://user-images.githubusercontent.com/33021781/125072558-5f381200-e0d8-11eb-9bc7-f8bd719e66f3.png)
 
