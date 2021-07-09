@@ -106,7 +106,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.createCollection("tests")
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.tests.drop()
 true
 ```
-## insert one value to collections
+## insert one value to users collection
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"steffy",age :23})
 {
@@ -115,17 +115,17 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"ste
 }
 ```
 
-## show collections ie tables
+## show users collection ie users table
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show collections
 users
 ```
-## show values stored in collections
+## show values stored in collection
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
 ```
-## insert multiple values to collections
+## insert multiple values to collection
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertMany({ name :"Thankam"},{name :"Wilson",age :51})
 uncaught exception: TypeError: documents.map is not a function :
@@ -140,14 +140,14 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertMany([{ name :"T
 	]
 }
 ```
-## show values stored in collections ie tables
+## show values stored in collection
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find()
 { "_id" : ObjectId("5f421b5e684950ade1ce944f"), "name" : "steffy", "age" : 23 }
 { "_id" : ObjectId("5f421e2c684950ade1ce9450"), "name" : "Thankam" }
 { "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
 ```
-## add some other values
+## insert some other values
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"Lisa",age :30})
 {
