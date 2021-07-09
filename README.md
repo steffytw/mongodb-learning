@@ -5,6 +5,15 @@
 * MongoDB is developed by MongoDB Inc. 
 * MongoDB is great for transactional stores where performance is a concern. 
 * Its also great when the data structure is going to evolve over time, as its schema-less operations allow you to update the data on the fly.
+
+
+## BSON data format
+*  The name "BSON" is based on the term JSON and stands for "Binary JSON".
+*  BSON is a computer data interchange format.
+![image](https://user-images.githubusercontent.com/33021781/125059785-53911f00-e0c9-11eb-9104-868bfc49b601.png)
+
+
+
 ## Connection Setup
 ```
 steffy@steffy:~/mongodb-linux-x86_64-ubuntu1804-4.4.0/bin$ mongo "mongodb+srv://cluster0.c2bvg.mongodb.net/<dbname>" --username steffy
@@ -28,6 +37,13 @@ local  3.769GB
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> use first-test
 switched to db first-test
 ```
+## show all the databases
+```
+MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show dbs
+admin       0.000GB
+first-test  0.000GB
+local       3.781GB
+```
 ## insert one value to collections
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"steffy",age :23})
@@ -36,13 +52,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.insertOne({ name :"ste
 	"insertedId" : ObjectId("5f421b5e684950ade1ce944f")
 }
 ```
-## show all the database
-```
-MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show dbs
-admin       0.000GB
-first-test  0.000GB
-local       3.781GB
-```
+
 ## show collections ie tables
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> show collections
@@ -101,7 +111,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:27})
 { "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
 
 ```
-## find age in 27
+## find document with age as 27
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:27})
 { "_id" : ObjectId("5f4221d6684950ade1ce9453"), "name" : "Manual", "age" : 27 }
@@ -109,7 +119,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:27})
 
 ```
 
-## find age greater than 25
+## find document with age greater than 25
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({age:{$gt :25}})
 { "_id" : ObjectId("5f421e2c684950ade1ce9451"), "name" : "Wilson", "age" : 51 }
@@ -148,7 +158,7 @@ MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street"
 { "_id" : ObjectId("5f422a2a684950ade1ce9455"), "name" : "Stewart", "age" : 30, "address" : { "street" : "t1 indranagar", "city" : " kolkata" } }
 ```
 
-## find adress with street t1 indranagar, nothing is returned
+## find address with street t1 indranagar, nothing is returned
 ```
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY> db.users.find({"address.street":"t1 indranagar"})
 MongoDB Enterprise atlas-ojbtmw-shard-0:PRIMARY>
